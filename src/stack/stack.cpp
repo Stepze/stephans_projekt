@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "Stack_Test.h"
+#include "stack.hpp"
 
 Stack_Test::Stack_Test()
 {
