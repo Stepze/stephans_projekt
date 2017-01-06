@@ -9,11 +9,7 @@
 #include <iostream>
 #include "stack.hpp"
 
-stack::stack()
-{
-    length = 0;
-    pointer_old = NULL;
-    pointer_new = NULL;
+stack::stack() : length(0), pointer_new(nullptr) {
 }
 
 size_t stack::count() const {
@@ -25,37 +21,31 @@ bool stack::empty() const {
 }
 
 
-void stack::push(data_type number)
-{
+void stack::push(data_type number) {
     length++;
+    int *old = pointer_new;
     pointer_new = new int[length];
-    for(int i=0;i<length;i++)
-    {
-        if (i==0)
-        {
-            pointer_new[i]=number;
-            continue;
-        }
-        else
-            pointer_new[i]=pointer_old[i-1];
+    pointer_new[0] = number;
+    for (int i = 1; i < length; i++) {
+        pointer_new[i] = old[i - 1];
     }
-    delete [] pointer_old;
-    pointer_old = pointer_new;
+    delete[] old;
 }
 
-stack::data_type stack::pop()
-{
+stack::data_type stack::pop() {
     data_type buffer;
-    length--;
-    pointer_new = new int[length];
-    for(int i=0;i<length;i++)
-    {
-        pointer_new[i]=pointer_old[i+1];
+    if (length == 0){
+        throw std::runtime_error("Tried to pop empty stack");
     }
-    buffer = pointer_old[0];
-    delete[](pointer_old);
-    pointer_old = pointer_new;
+    length--;
+    int *old = pointer_new;
+    pointer_new = new int[length];
+    for (int i = 0; i < length; i++) {
+        pointer_new[i] = old[i + 1];
+    }
+    buffer = old[0];
+    delete[](old);
     return buffer;
-    
+
 }
 

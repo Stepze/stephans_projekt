@@ -21,7 +21,6 @@ public:
     stack();
 private:
     data_type length;
-    int* pointer_old;
     int* pointer_new;
 };
 
