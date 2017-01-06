@@ -39,6 +39,7 @@ void stack::push(data_type number)
         else
             pointer_new[i]=pointer_old[i-1];
     }
+    delete [] pointer_old;
     pointer_old = pointer_new;
 }
 
@@ -52,6 +53,7 @@ stack::data_type stack::pop()
         pointer_new[i]=pointer_old[i+1];
     }
     buffer = pointer_old[0];
+    delete[](pointer_old);
     pointer_old = pointer_new;
     return buffer;
     
