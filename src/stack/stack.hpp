@@ -1,6 +1,6 @@
 //
 //  Header.h
-//  Stack_Test
+//  stack
 //
 //  Created by Stephan Zeitz on 06.01.17.
 //  Copyright (c) 2017 Stephan Zeitz. All rights reserved.
@@ -9,7 +9,7 @@
 #ifndef Stack_Test_Header_h
 #define Stack_Test_Header_h
 
-class Stack_Test
+class stack
 {
 public:
     using data_type = int;
@@ -18,7 +18,7 @@ public:
     size_t count() const;
     bool empty() const;
     
-    Stack_Test();
+    stack();
 private:
     data_type length;
     int* pointer_old;

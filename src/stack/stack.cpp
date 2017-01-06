@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  Stack_Test
+//  stack
 //
 //  Created by Stephan Zeitz on 06.01.17.
 //  Copyright (c) 2017 Stephan Zeitz. All rights reserved.
@@ -9,16 +9,23 @@
 #include <iostream>
 #include "stack.hpp"
 
-Stack_Test::Stack_Test()
+stack::stack()
 {
     length = 0;
     pointer_old = NULL;
     pointer_new = NULL;
 }
 
+size_t stack::count() const {
+    return 0;
+}
+
+bool stack::empty() const {
+    return false;
+}
 
 
-void Stack_Test::push(data_type number)
+void stack::push(data_type number)
 {
     length++;
     pointer_new = new int[length];
@@ -35,7 +42,7 @@ void Stack_Test::push(data_type number)
     pointer_old = pointer_new;
 }
 
-Stack_Test::data_type Stack_Test::pop()
+stack::data_type stack::pop()
 {
     data_type buffer;
     length--;
